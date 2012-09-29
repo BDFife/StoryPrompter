@@ -8,12 +8,13 @@ from flask import Flask
 from flask import request
 from flask import url_for, redirect
 from flask import render_template
+from storygen import generate_story
 
 app = Flask (__name__)
 
 @app.route('/')
 def index():
-    return ('hello world!')
+    return generate_story()
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
