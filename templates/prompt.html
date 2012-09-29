@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+
+<html>
+<head>
+  <meta name="generator" content="HTML Tidy for Mac OS X (vers 31 October 2006 - Apple Inc. build 15.6), see www.w3.org">
+
+  <title>Tell me {{ story_type }}</title>
+  <link href="{{ url_for('static', filename='examples.css') }}" media="screen" rel="stylesheet" type="text/css">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="//connect.soundcloud.com/sdk.js"></script>
+  <script>
+    SC.initialize({
+      client_id: "01c9cf5034b7843aad46f934522ed597",
+    });
+  
+    $("#recorderUI.reset #controlButton").live("click", function(e){
+      updateTimer(0);
+      SC.record({
+        start: function(){
+          setRecorderUIState("recording");
+        },
+        progress: function(ms, avgPeak){
+          updateTimer(ms);
+        }
+      });
+      e.preventDefault();
+    });
+  
+    $("#recorderUI.recording #controlButton, #recorderUI.playing #controlButton").live("click", function(e){
+      setRecorderUIState("recorded");
+      SC.recordStop();
+      e.preventDefault();
+    });
+  
+    $("#recorderUI.recorded #controlButton").live("click", function(e){
+      updateTimer(0);
+      setRecorderUIState("playing");
+      SC.recordPlay({
+        progress: function(ms){
+          updateTimer(ms);
+        },
+        finished: function(){
+          setRecorderUIState("recorded");
+        }
+      });
+      e.preventDefault();
+    });
+  
+    $("#reset").live("click", function(e){
+      SC.recordStop();
+      setRecorderUIState("reset");
+      e.preventDefault();
+    });
+  
+    $("#upload").live("click", function(e){
+      setRecorderUIState("uploading");
+  
+      SC.connect({
+        connected: function(){
+          $("#uploadStatus").html("Uploading...");
+          SC.recordUpload({
+            track: {
+              title: "Untitled Recording",
+              sharing: "private"
+            }
+          }, function(track){
+            $("#uploadStatus").html("Uploaded: <a href='" + track.permalink_url + "'>" + track.permalink_url + "</a>");
+          });
+        }
+      });
+  
+      e.preventDefault();
+    });
+  
+    function updateTimer(ms){
+      $("#timer").text(SC.Helper.millisecondsToHMS(ms));
+    }
+  
+    function setRecorderUIState(state){
+      // state can be reset, recording, recorded, playing, uploading
+      // visibility of buttons is managed via CSS
+      $("#recorderUI").attr("class", state);
+    }
+  </script>
+
+</head>
+
+<body>
+  <h1>Our request:</h1>
+
+  <p>Tell me a story about {{ story_string }}.</p>
+
+  <p>Please use the widget below to record your story to soundcloud!</p>
+
+  <div id="recorderUI" class="reset">
+    <a href="#" id="controlButton" class="record" name="controlButton"><span id="timer" class="hidden">0:00</span></a>
+
+    <div id="otherControls">
+      <a href="#" id="reset" class="button" name="reset">Reset</a> <a href="#" id="upload" class="button" name="upload">Upload</a>
+    </div>
+
+    <div id="uploadStatus"></div>
+  </div>
+
+  <p>(flash required)</p>
+</body>
+</html>
