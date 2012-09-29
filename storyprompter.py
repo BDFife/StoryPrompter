@@ -11,7 +11,7 @@ from flask import url_for, redirect
 from flask import render_template
 from storygen import generate_story
 
-genres = ["Fable", "Fable", "News"]
+genres = ["Fable", "Fable", "News", "Personal", "Personal"]
 
 app = Flask (__name__)
 

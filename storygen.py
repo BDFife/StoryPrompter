@@ -21,6 +21,11 @@ def generate_story(type):
         b = random.choice(my_data['fable_body'])
         return "Tell me a fable. How about " + a + " " + b + "?"
 
+    if type == "Personal":
+        a = random.choice(my_data['personal_time'])
+        b = random.choice(my_data['personal_subject'])
+        return "Tell me a story " + a + " " + b + "."
+
     if type == "News":
         req_vars = { 'count':5,
                      'days':0,
