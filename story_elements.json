@@ -1,4 +1,12 @@
 {
+    "personal_time": [
+        "from this year", 
+        "from childhood", 
+        "from this week", 
+        "from elementary school", 
+        "from middle school", 
+        "from high school"
+    ], 
     "fable_body": [
         "who learns to swim", 
         "who makes a friend", 
@@ -20,6 +28,15 @@
         "who has to speak in public", 
         "who is very lucky"
     ], 
+    "personal_subject": [
+        "when you were broke", 
+        "when you were surprised", 
+        "when you had a perfect day", 
+        "when you were sad about technology", 
+        "when you were scared", 
+        "when you were impressed by the weather", 
+        "when a parent did something unxpected"
+    ], 
     "fable_subject": [
         "a baby skunk", 
         "a fox", 
@@ -28,7 +45,7 @@
         "a dog and a cat", 
         "a puppy", 
         "a racehorse", 
-        "a bacterian camel", 
+        "a bactrian camel", 
         "a baby seagull", 
         "a condor", 
         "an anteater", 

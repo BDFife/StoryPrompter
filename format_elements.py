@@ -15,7 +15,7 @@ def get_file_data(file_name):
     return file_lines
 
 source_data = {}
-source_names = ['fable_subject', 'fable_body']
+source_names = ['fable_subject', 'fable_body', 'personal_time', 'personal_subject']
 
 for item in source_names:
     item_data = get_file_data(item + '.txt')
