@@ -1,0 +1,48 @@
+Story Prompter
+
+Demonstrating the use of SoundCloud and Mashery APIs
+
+Prerequisites:
+Flask environment for Python
+Github for code respository
+Mashable account for access to the USA Today API
+Heraku application hosting account
+SoundCloud account to allow uploading recordings. (SoundCloud recording 
+currently requires Flash.)
+
+At the 2012 Story Hack Boston hackathon:
+Hacker League account was used to curate the projects of the day.
+
+Components in the Github repository:
+Hand-edited text files containing the strings to define types and subjects.
+fable_subject.txt
+fable_body.txt
+personal_subject.txt
+personal_time.txt
+
+format_elements.py - Offline utility converts the text files to json 
+format for convenient input to the core program.
+
+story_elements.json - Output of the format_elements.py utility.
+
+Procfile - This file, installed on Heroku, tells Heroku to run 
+storyprompter.py in Python when a user's browser opens the link at storyprompter-bdfife.herokuapp.com
+
+requirements.txt - Python package dependencies list used by Heroku
+
+storyprompter.py - Main program selects randomly from a list of genre types, 
+then calls storygen.py to build a story suggestion, then outputs an HTML file 
+based on the story suggestion and a template derived from the SoundCloud SDK.
+
+storygen.py - Builds a prompt string that contains the story suggestion 
+given a type.
+
+secrets.py - Stores access authentication for Mashable's USA Today API. This 
+version has a placeholder for the account information. Only the installed 
+version on Heroku has valid ID info where it's not readable by users.
+
+static/examples.css and rec_button_large.png - These were borrowed from 
+SoundCloud because they are called by the template prompt.html.
+
+templates/prompt.html - Presentation page for users. Derived from 
+the SoundCloud example code.
