@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>StoryPrompter</title>
+        <link rel="stylesheet" type="text/css" href="/static/style.css" />
+    </head>
+    <body>
+    
+    <h2><font >Tell me a story. Pick one of the suggestions below to get started.
+        <div id="nav">
+        <br>
+            <ul>
+                <li><a href="{{url_for('show_story',type='Fable')}}">Fable</a></li>
+                <li><a href="{{url_for('show_story',type='Personal')}}">Personal</a></li>
+                <li><a href="{{url_for('show_story',type='News')}}">News</a></li>
+                <li><a href="{{url_for('show_story',type='Random')}}">Random</a></li>
+            </ul>
+        </div></h2>
+    </body>
+</html>
+

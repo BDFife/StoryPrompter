@@ -106,6 +106,15 @@
     <div id="uploadStatus"></div>
   </div>
 
-  <p>(flash required)</p>
+  <div id="flash_req">
+    <p>(flash required)</p>
+  </div>
+  
+  <IMG SRC="/static/{{story_type}}.jpg" ALT="{{story_type}}" WIDTH=460 HEIGHT=288>
+
 </body>
 </html>
+
+{% block nav %}
+<li><a href="{{url_for('index')}}"><strong>Back</a></li>
+{% endblock %}

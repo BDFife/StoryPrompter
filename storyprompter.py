@@ -17,10 +17,18 @@ app = Flask (__name__)
 
 @app.route('/')
 def index():
-    my_genre = random.choice(genres)
-    return render_template('prompt.html', story_type=my_genre, story_string=generate_story(my_genre))
+	return render_template('story_index.html')
+
+@app.route('/prompt/<type>')
+def show_story(type=None):
+	if type in genres:
+		string = generate_story(type)
+	else:
+		type = random.choice(genres)
+		string = generate_story(type)
+	
+	return render_template('prompt.html', story_type=type, story_string=string)
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port, debug=True)
-
