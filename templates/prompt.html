@@ -32,8 +32,8 @@
     <p>(flash required)</p>
   </div>
   
-  <IMG SRC="/static/{{story_type}}.jpg" ALT="{{story_type}}" WIDTH=460 HEIGHT=288>
-
+  <IMG SRC="{{ url_for('static', filename=(story_type + '.jpg')) }}" ALT="{{story_type}}" WIDTH=460 HEIGHT=288>
+cd 
 </body>
 </html>
 
