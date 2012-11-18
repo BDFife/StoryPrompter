@@ -19,11 +19,6 @@ app = Flask (__name__)
 def index():
 	return render_template('story_index.html')
 
-# Defined here to allow a 'back' button in the about page
-@app.route('/templates/')
-def about():
-	return render_template('about.html')
-
 @app.route('/prompt/<type>')
 def show_story(type=None):
 	if type in genres:
