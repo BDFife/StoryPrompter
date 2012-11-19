@@ -1,42 +1,40 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
-
 <html>
-<head>
-  <meta name="generator" content="HTML Tidy for Mac OS X (vers 31 October 2006 - Apple Inc. build 15.6), see www.w3.org">
-
-  <title>Tell me {{ story_type }}</title>
-  <link href="{{ url_for('static', filename='examples.css') }}" media="screen" rel="stylesheet" type="text/css">
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  <script src="//connect.soundcloud.com/sdk.js"></script>
-  <script src="{{ url_for('static', filename='soundcloud.js') }}"></script>
-</head>
-
-<body>
-  <p>Our request:</p>
-
-  <H1>{{ story_string|safe }}</H1>
-
-  <p>Please use the widget below to record your story to soundcloud!</p>
-
-  <div id="recorderUI" class="reset">
-    <a href="#" id="controlButton" class="record" name="controlButton"><span id="timer" class="hidden">0:00</span></a>
-
-    <div id="otherControls">
-      <a href="#" id="reset" class="button" name="reset">Reset</a> <a href="#" id="upload" class="button" name="upload">Upload</a>
-    </div>
-
-    <div id="uploadStatus"></div>
-  </div>
+  <head>
+    <title>Tell me {{ story_type }}</title>
+    <link href="{{ url_for('static', filename='examples.css') }}" media="screen" rel="stylesheet" type="text/css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="//connect.soundcloud.com/sdk.js"></script>
+    <script src="{{ url_for('static', filename='soundcloud.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}"/>
+  </head>
   
-  <IMG SRC="{{ url_for('static', filename=(story_type + '.jpg')) }}" ALT="{{story_type}}" WIDTH=460 HEIGHT=288>
-
-  <div id="flash_req">
-    <p>Flash required. If asked, log into your SoundCloud account to upload your recording.</p>
-  </div>
-
-</body>
+  <body>
+    <p>Our request:</p>
+  
+    <H1>{{ story_string|safe }}</H1>
+  
+    <p>Please use the widget below to record your story to soundcloud!</p>
+  
+    <div id="recorderUI" class="reset">
+      <a href="#" id="controlButton" class="record" name="controlButton"><span id="timer" class="hidden">0:00</span></a>
+  
+      <div id="otherControls">
+        <a href="#" id="reset" class="button" name="reset">Reset</a> <a href="#" id="upload" class="button" name="upload">Upload</a>
+      </div>
+  
+      <div id="uploadStatus"></div>
+    </div>
+    
+    <IMG SRC="{{ url_for('static', filename=(story_type + '.jpg')) }}" ALT="{{story_type}}" WIDTH=460 HEIGHT=288>
+  
+    <div id="flash_req">
+      <p>Flash required. If asked, log into your SoundCloud account to upload your recording.</p>
+    </div>
+  
+    {% block nav %}
+      <li><a href="{{url_for('index')}}"><strong>Back</a></li>
+    {% endblock %}
+  
+  </body>
 </html>
 
-{% block nav %}
-<li><a href="{{url_for('index')}}"><strong>Back</a></li>
-{% endblock %}
