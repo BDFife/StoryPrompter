@@ -7,17 +7,26 @@
     </head>
     <body>
     
-    <h2><font >Tell me a story. Pick one of the suggestions below to get started.
-        <div id="nav">
+    <h2><font >Tell me a story. Click one of the pictures below to get started.
+        <div id="tiles">
         <br>
-            <ul>
-                <li><a href="{{url_for('show_story',type='Fable')}}">Fable</a></li>
-                <li><a href="{{url_for('show_story',type='Personal')}}">Personal</a></li>
-                <li><a href="{{url_for('show_story',type='News')}}">News</a></li>
-                <li><a href="{{url_for('show_story',type='Random')}}">Random</a></li>
-            </ul>
-        </div></h2>
-        
+        <a href="{{url_for('show_story',type='Fable')}}">
+          <img src="{{url_for('static', filename='Fable.jpg')}}" 
+            width=300 height=188 border="0" alt="Fable"></a>
+
+        <a href="{{url_for('show_story',type='News')}}">
+          <img src="{{url_for('static', filename='News.jpg')}}" 
+            width=300 height=188 border="0" alt="News"></a>
+
+        <a href="{{url_for('show_story',type='Personal')}}">
+          <img src="{{url_for('static', filename='Personal.jpg')}}" 
+            width=300 height=188 border="0" alt="Personal"></a>
+
+        <a href="{{url_for('show_story',type='Random')}}">
+          <img src="{{url_for('static', filename='Random.jpg')}}" 
+            width=300 height=188 border="0" alt="Random"></a>
+                  
+        </div></h2>       
         
         <a href="{{url_for('about')}}"><strong>About StoryPrompter</a>
     </body>

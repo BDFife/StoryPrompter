@@ -1,3 +1,35 @@
 body {
-	background-color: grey;
+	background-color: lightblue;
+}
+
+#flash_req {
+  text-align: center;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    margin: 0;
+    padding: 5;
+}
+
+#tiles {
+   /* Prevent vertical gaps */
+   line-height: 0;
+   
+   -webkit-column-count: 3;
+   -webkit-column-gap:   0px;
+   -moz-column-count:    3;
+   -moz-column-gap:      0px;
+   column-count:         3;
+   column-gap:           0px;
+   
+}
+#tiles img {
+  /* Just in case there are inline attributes */
+  width: 100% !important;
+  height: auto !important;
 }
